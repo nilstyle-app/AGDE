@@ -30,8 +30,8 @@ export default function Home() {
     const result = await getGameRecommendationsAction(query);
     if (result.error) {
       setError(result.error);
-    } else if (result.recommendations) {
-      setBranches([ { games: result.recommendations, level: 0 } ]);
+    } else {
+      setBranches([{ games: result.recommendations || [], level: 0 }]);
     }
     setIsFinding(false);
   };
@@ -44,15 +44,13 @@ export default function Home() {
       throw new Error(result.error);
     }
 
-    if (result.recommendations) {
-      setBranches(prevBranches => {
-        // Remove any branches deeper than the current one
-        const newBranches = prevBranches.slice(0, level + 1);
-        // Add the new branch
-        newBranches.push({ games: result.recommendations, parent: parentGame, level: level + 1 });
-        return newBranches;
-      });
-    }
+    setBranches(prevBranches => {
+      // Remove any branches deeper than the current one
+      const newBranches = prevBranches.slice(0, level + 1);
+      // Add the new branch
+      newBranches.push({ games: result.recommendations || [], parent: parentGame, level: level + 1 });
+      return newBranches;
+    });
   };
 
   return (
