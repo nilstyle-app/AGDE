@@ -22,6 +22,7 @@
     }
   },
   "functions": {
-    "source": "src/ai"
+    "source": "src/ai",
+    "runtime": "nodejs20"
   }
 }
