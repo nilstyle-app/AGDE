@@ -6,6 +6,7 @@ import GameCard from '@/components/game-card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Send } from 'lucide-react';
+import { GameCardSkeleton } from './game-card-skeleton';
 
 export interface RecommendationBranchProps {
   games: Game[];
@@ -101,6 +102,20 @@ export function RecommendationBranch({
             </Button>
           </div>
           {error && <p className="mt-4 text-center text-destructive">{error}</p>}
+        </div>
+      )}\n
+      {isFinding && (
+        <div className="mt-8 border-t pt-8">
+            <div className="mb-6">
+                <h3 className="text-xl font-semibold tracking-tight font-headline">
+                    <span className="text-muted-foreground">「{selectedGame?.title}」</span>に似たゲーム
+                </h3>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <GameCardSkeleton />
+                <GameCardSkeleton />
+                <GameCardSkeleton />
+            </div>
         </div>
       )}
     </div>

@@ -7,6 +7,7 @@ import { Loader2, Send } from 'lucide-react';
 import { Game } from '@/ai/schemas';
 import { getGameRecommendationsAction, findSimilarGamesAction } from './actions';
 import { RecommendationBranch } from '@/components/recommendation-branch';
+import { GameCardSkeleton } from '@/components/game-card-skeleton';
 
 interface Branch {
   games: Game[];
@@ -98,9 +99,20 @@ export default function Home() {
         {error && <p className="mt-4 text-center text-destructive">{error}</p>}
       </div>
 
+      {isFinding && (
+        <div className="mt-12">
+            <h2 className="text-2xl font-bold tracking-tight text-center">おすすめのゲーム</h2>
+            <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
+                <GameCardSkeleton />
+                <GameCardSkeleton />
+                <GameCardSkeleton />
+            </div>
+        </div>
+      )}
+
       {branches.length > 0 && (
         <div className="mt-12">
-            {branches[0].games.length > 0 && (
+            {branches[0].games.length > 0 && !isFinding && (
                 <h2 className="text-2xl font-bold tracking-tight text-center">おすすめのゲーム</h2>
             )}
             {branches.map((branch, index) => (
