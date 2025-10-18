@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
-  title: 'AI Game Discovery Engine (AGDE)',
-  description: 'AI-powered game recommendations in Japanese.',
+  title: 'AIゲーム発見エンジン (AGDE)',
+  description: 'AIがあなたの好みに合わせて、隠れた名作ゲームをおすすめします。',
 };
 
 export default function RootLayout({
