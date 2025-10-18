@@ -55,16 +55,16 @@ export default function Home() {
 
   return (
     <main className="container mx-auto p-4 md:p-8">
-      <div className="max-w-2xl mx-auto text-center">
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl font-headline">
-          AIゲームファインダー
+      <div className="text-center my-12 md:my-16">
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl font-headline text-gradient-animated">
+          AI Game Discovery Engine
         </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
+        <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto">
           あなたのための完璧なゲームを見つけましょう。自然言語で好みを伝えるだけで、AIが最適なゲームを提案します。
         </p>
       </div>
 
-      <div className="max-w-2xl mx-auto mt-8">
+      <div className="max-w-2xl mx-auto">
         <div className="flex items-start gap-2">
           <Textarea
             placeholder="ストーリーが良くて、PCでできるRPGを探しています。"
