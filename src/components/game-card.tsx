@@ -24,7 +24,8 @@ import {
 } from 'lucide-react';
 import type { Game } from '@/ai/schemas';
 
-const getGenreIcon = (genre: string): React.ReactNode => {
+const getGenreIcon = (genre: string | undefined | null): React.ReactNode => {
+    if (!genre) return <Gamepad2 className="w-4 h-4" />;
     const lowerGenre = genre.toLowerCase();
     if (lowerGenre.includes('rpg')) return <Swords className="w-4 h-4" />;
     if (lowerGenre.includes('アクション') || lowerGenre.includes('action'))
@@ -41,8 +42,9 @@ const getGenreIcon = (genre: string): React.ReactNode => {
 };
 
 const getTrendVariant = (
-    trend: string
+    trend: string | undefined | null
 ): 'default' | 'secondary' | 'destructive' | 'outline' => {
+    if (!trend) return 'outline';
     const lowerTrend = trend.toLowerCase();
     if (
       lowerTrend.includes('positive') ||
@@ -100,10 +102,14 @@ export default function GameCard({
                         <span>{game.price}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-primary" />
-                        <Badge variant={getTrendVariant(game.recentReviewTrend)}>
-                            {game.recentReviewTrend}
-                        </Badge>
+                        {game.recentReviewTrend && (
+                            <>
+                                <TrendingUp className="w-4 h-4 text-primary" />
+                                <Badge variant={getTrendVariant(game.recentReviewTrend)}>
+                                    {game.recentReviewTrend}
+                                </Badge>
+                            </>
+                        )}
                     </div>
                 </div>
                 {isExpanded && (

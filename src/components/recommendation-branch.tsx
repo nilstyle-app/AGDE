@@ -103,7 +103,8 @@ export function RecommendationBranch({
           </div>
           {error && <p className="mt-4 text-center text-destructive">{error}</p>}
         </div>
-      )}\n
+      )}
+
       {isFinding && (
         <div className="mt-8 border-t pt-8">
             <div className="mb-6">
