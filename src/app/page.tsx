@@ -37,7 +37,11 @@ export default function Home() {
   };
 
   const handleFindSimilar = async (level: number, parentGame: Game, similarQuery: string) => {
-    const result = await findSimilarGamesAction({ game: parentGame, query: similarQuery });
+    const result = await findSimilarGamesAction({ 
+      game: parentGame, 
+      query: similarQuery,
+      originalQuery: query, // Pass the original query
+    });
     
     if (result.error) {
       // This error should ideally be displayed within the branch component
