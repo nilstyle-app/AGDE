@@ -20,9 +20,5 @@
     "ui": {
       "enabled": true
     }
-  },
-  "functions": {
-    "source": "src/ai",
-    "runtime": "nodejs20"
   }
 }
